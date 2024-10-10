@@ -44,34 +44,31 @@ export const ProductContextProvider = ({children})=>{
             
             return previous;
         })
+     }
+
+   const filterProducts = (category) => {
+    if (category) {
+    const filteredProducts = products_data.filter(product => product.category === category);
+    setProducts(filteredProducts);
+    } else {
+    setProducts(products_data);
     }
 
-    const filterProducts = (category)=>{
-        if(category){
-          const filteredProducts = products_data.filter(product => {
-            if(product.category === category){
-                return product;
-            }
-        })
-        setProducts(filteredProducts)
-      }
-      else {
-        setProducts(products_data)
-      }
    }
-   const setInvoiceData = () =>{
-    setInvoice(previous=>{
-        let newInvoice = {...previous,count:0,subTotal:0};
-        cart.forEach(product=>{
-            newInvoice.count += product.quantity;
-            newInvoice.subTotal += product.quantity * product.price;
-        })
+   useEffect(() => {
+    const setInvoiceData = () => {
+      setInvoice((previous) => {
+        let newInvoice = { ...previous, count: 0, subTotal: 0 };
+        cart.forEach((product) => {
+          newInvoice.count += product.quantity;
+          newInvoice.subTotal += product.quantity * product.price;
+        });
         return newInvoice;
-    })
-   }
-   useEffect(()=>{
-      setInvoiceData()
-   },[cart])
+      });
+    };
+
+    setInvoiceData();
+  }, [cart, setInvoice]);
 
     return (
         <ProductContext.Provider value={{products, filterProducts,addToCart,invoice,cart,removeToCart}}>
