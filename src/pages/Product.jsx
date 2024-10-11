@@ -7,7 +7,7 @@ export default function Product() {
     const [selectedProduct, setSelectedProduct] = useState(null)
 
   return (
-    <div className='flex flex-wrap gap-6 '>
+    <div className='grid grid-cols-2 sm:grid-cols-1 gap-6'>
         {
         products.map(product =>{
             return(

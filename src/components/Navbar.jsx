@@ -19,7 +19,7 @@ export default function Navbar() {
                 <span>Phonekart</span>
             </NavLink>
             <ul className='flex items-center gap-10'>
-            <li> <Link className='text-black' to={'/'}>Home</Link></li>
+           
                 {
                     products_categories.map(category => {
                         return (
