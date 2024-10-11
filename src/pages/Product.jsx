@@ -7,22 +7,22 @@ export default function Product() {
     const [selectedProduct, setSelectedProduct] = useState(null)
 
   return (
-    <div className='max-w-screen-md grid grid-cols-2 sm:grid-cols-1 gap-6'>
+    <div className='max-w-screen-lg mx-auto grid grid-cols-2  gap-6 p-4'>
         {
         products.map(product =>{
             return(
-                <div key={product.id} className='w-full bg-white p-6 hover:shadow-lg border rounded-lg'>
+                <div key={product.id} className='w-full bg-white p-6 hover:shadow-lg border rounded-lg flex flex-col justify-between'>
                     
                     <img src={product.image} alt={product.name} className='w--full h-[150px] object-contain block m-auto '/>
                     {/* product info */}
-                    <div className='flex flex-col gap-2 my-4  h-[120px] '>
+                    <div className='flex flex-col gap-2 my-4 '>
                         <p className='text-center font-bold'>{product.name}</p>
                         <p className='text-center'>${product.price}</p>
-                        <p className='text-xs text-gray-500' onClick={()=>{
+                        <p className='text-sm text-gray-500 mb-4 transition-colors duration-200 active:text-blue-600 hover:text-gray-700' onClick={()=>{
                     setShowDetails(true)
-                    setSelectedProduct(product)}}>{product.smallDescription}</p>
+                    setSelectedProduct(product)}}>Description</p>
                     </div>
-                    <button className='w-full bg-blue-600 text-white text-xs p-2' onClick={()=>addToCart(product)}>+ Add To Cart</button>
+                    <button className='w-full bg-blue-600 text-white text-xs p-2 mt-auto' onClick={()=>addToCart(product)}>+ Add To Cart</button>
                 </div>
                 
             )
@@ -30,11 +30,11 @@ export default function Product() {
 
         } 
          { showDetails && 
-            <div className='absolute top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center'>
-                <div className='bg-white p-4 rounded-md shadow-md'>
+            <div className='fixed top-0 left-0 w-full h-full bg-black/50 flex justify-center items-center z-50'>
+                <div className='bg-white p-6 rounded-md shadow-md relative w-[300px] h-[300px] flex flex-col justify-center items-center'>
                     <button onClick={() => setShowDetails(false)} className='absolute top-2 right-2 text-red-500 hover:text-red-700'>Close</button>
-                    <h2 className='text-xl font-bold mb-2'>{products.name}</h2>
-                    <p className='text-gray-700'>{selectedProduct.smallDescription}</p>
+                    <h2 className='text-xl font-bold mb-4'>{products.name}</h2>
+                    <p className='text-gray-700 overflow-auto'>{selectedProduct.smallDescription}</p>
                 </div>
             </div>
          }

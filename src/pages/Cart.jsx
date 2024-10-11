@@ -25,14 +25,14 @@ export default function Cart() {
                             
                         </div> 
                             <p className=''>{product.price}</p>
-                            <IoMdRemoveCircleOutline className='text-red-600 text-8xl curser-pointer' onClick={()=>removeToCart(product)} />
+                            <IoMdRemoveCircleOutline className='text-red-600 text-8xl curser-pointer sm:text-sm md:text-lg lg:text-xl' onClick={()=>removeToCart(product)} />
                     </div>
                    ) 
                 })
               } 
               <div className='flex flex-col items-end gap-4 '>
                 <p>subtotal({invoice.count}):${invoice.subTotal}</p>
-                <button className='bg-blue-600 text-xs rounded-md'>Place Order</button>
+                <button className='bg-blue-600 text-xs rounded-md sm:text-sm md:text-lg lg:text-xl'>Place Order</button>
               </div>
 
            </div>
