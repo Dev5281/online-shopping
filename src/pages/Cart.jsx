@@ -25,7 +25,7 @@ export default function Cart() {
                             
                         </div> 
                             <p className=''>{product.price}</p>
-                            <IoMdRemoveCircleOutline className='text-red-600 text-2xl curser-pointer' onClick={()=>removeToCart(product)} />
+                            <IoMdRemoveCircleOutline className='text-red-600 text-8xl curser-pointer' onClick={()=>removeToCart(product)} />
                     </div>
                    ) 
                 })
