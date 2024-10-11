@@ -7,22 +7,22 @@ export default function Product() {
     const [selectedProduct, setSelectedProduct] = useState(null)
 
   return (
-    <div className='grid grid-cols-2 sm:grid-cols-1 gap-6'>
+    <div className='max-w-screen-md grid grid-cols-2 sm:grid-cols-1 gap-6'>
         {
         products.map(product =>{
             return(
-                <div key={product.id} className='w-[200px]  p-6 hover:shadow-lg'>
+                <div key={product.id} className='w-full bg-white p-6 hover:shadow-lg border rounded-lg'>
                     
-                    <img src={product.image} alt={product.name} className='w-[200px] h-[150px] object-contain block m-auto '/>
+                    <img src={product.image} alt={product.name} className='w--full h-[150px] object-contain block m-auto '/>
                     {/* product info */}
-                    <div className='flex flex-col gap-2 my-4  h-[120px] p-4'>
+                    <div className='flex flex-col gap-2 my-4  h-[120px] '>
                         <p className='text-center font-bold'>{product.name}</p>
                         <p className='text-center'>${product.price}</p>
                         <p className='text-xs text-gray-500' onClick={()=>{
                     setShowDetails(true)
                     setSelectedProduct(product)}}>{product.smallDescription}</p>
                     </div>
-                    <button className='w-full bg-blue-600 text-white text-xs p-1' onClick={()=>addToCart(product)}>+ Add To Cart</button>
+                    <button className='w-full bg-blue-600 text-white text-xs p-2' onClick={()=>addToCart(product)}>+ Add To Cart</button>
                 </div>
                 
             )
